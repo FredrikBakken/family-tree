@@ -1,0 +1,5 @@
+# Requirements
+anytree==2.8.0          # https://pypi.org/project/anytree/
+beautifulsoup4==4.9.3   # https://pypi.org/project/beautifulsoup4/
+requests==2.26.0        # https://pypi.org/project/requests/
+graphviz==0.17          # https://pypi.org/project/graphviz/
