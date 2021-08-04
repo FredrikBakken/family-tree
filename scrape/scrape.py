@@ -32,7 +32,7 @@ def website(url):
 
                 # Some rows has both th and td, others have only td
                 if (len(head_cells) + len(data_cells) == 1):
-                    person["Name"] = data_cells[0].text.strip()
+                    person["Name"] = data_cells[0].text.strip().split("\n")[0]
                 elif (len(head_cells) + len(data_cells) == 2):
                     if (len(head_cells) > 0):
                         key = head_cells[0].text.strip().replace(":", "")

@@ -7,23 +7,31 @@ from scrape import scrape
 
 
 # Initialize global variables
+person_nodes = {}
 person_count = {}
 issues = []
 
 
 def getParents(url, node):
-    # Collect parent information
-    person, parent_urls = scrape.website(url)
-    
     try:
+        new_node = person_nodes.get(url, None)
+
+        # Collect parent information
+        if (new_node == None):
+            person, parent_urls = scrape.website(url)
+            new_node = [Node(f"{person['Name']}\n{url}"), parent_urls]
+            person_nodes[url] = new_node
+
+        # Assign parent (child)
+        new_node[0].parent = node
+
         # Build parent node and attach to child's node
-        new_node = Node(f"{person['Name']}\n{url}", node)
-        person_count[person["Name"]] = person_count.get(person["Name"], 0) + 1
-        print(f"{person_count[person['Name']]} | Number of parents: {len(parent_urls)}, person: {person['Name']}, links: {parent_urls}")
+        person_count[url] = person_count.get(url, 0) + 1
+        print(f"{person_count[url]} | Number of parents: {len(parent_urls)}, person: {person['Name']}, links: {parent_urls}")
 
         # Recursion
-        for parent_url in parent_urls:
-            getParents(parent_url, new_node)
+        for parent_url in new_node[1]:
+            getParents(parent_url, new_node[0])
     except:
         print("Oops! Something happened....")
 
