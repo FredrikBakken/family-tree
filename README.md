@@ -3,7 +3,7 @@ Build your family tree.
 
 This application scrapes the Geni website for all direct parents of an individual, before visualizing the results.
 
-**Be aware:** This is a web scrapes - which means that if the layout of the Geni pages changes, this application may no longer function as intended.
+**Be aware:** This is a web scraper - which means that if the layout of the Geni pages changes, this application may no longer function as intended.
 
 # Prerequists
 ## Visualization with Graphviz
